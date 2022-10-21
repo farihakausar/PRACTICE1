@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+   {{>links}}
+
+    <title>Weather WEb</title>
+    <style>
+      *{
+    margin: 0;
+    padding: 0;
+    font-family: 'Permanent Marker', cursive;
+
+}
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+:root{
+    --main-bg:rgb(30, 126, 159);
+    --main-color:black;
+}
+.bg{
+   
+    background-color: var(--main-color);
+}
+/* .navbar a{
+    color: white;
+} */
+.navbar li a{
+    color: white;
+}
+.navbar li a:hover{
+color: var(--main-bg);
+}
+
+.fa-snowflake{
+    transition: all 2s;
+    animation: rot 2s linear infinite;
+}
+.navbar-nav{
+    padding-left: 50px;
+}
+
+.navbar-toggler-icon{
+    /* color: white; */
+    background-color: white !important;
+}
+.main-theme{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+}
+
+.main-theme h1{
+text-transform: uppercase;
+
+}
+
+a button{
+       text-transform: capitalize; 
+         border: 1px solid white;
+        border-radius: 20px;
+        outline: none;
+        padding: 15px;
+         text-decoration: none;
+        margin: 10px;
+        box-shadow: 0px 8px 8px var(--main-color); 
+   
+} 
+a button:hover{
+    box-shadow: 0px 8px  8px var(--main-bg);
+}
+.text-color{
+    color: var(--main-bg);
+}
+.shade{
+   filter: drop-shadow(0 0.5rem 1rem rgba(0,0,0,0.3));
+}
+.footer{
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: auto;
+    align-items: flex-end;
+    color: white;
+    text-align: center;
+    
+    background-color: var(--main-color);
+}
+@keyframes rot{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+    </style>
+  </head>
+  <body>
+    {{>header}}
+    <div class="main-theme">
+     
+        <div class="col-md-6 col-sm-12">
+          <img src="data:image/jpeg;base64,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" alt="" class="shade">
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <p>Welcome  to my intro</p>
+          <h1>
+             I am a  <span class="text-color">MERN STACK DEVELOPER</span> <hr>,freelancer
+           
+          </h1>
+          <a href="/about" target="_blank"><button>check now</button></a>
+         
+        </div>
+      
+      
+    </div>
+    {{>footer}}
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
